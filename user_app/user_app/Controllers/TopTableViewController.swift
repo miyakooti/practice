@@ -1,32 +1,16 @@
-//
-//  TopTableViewController.swift
-//  user_app
-//
-//  Created by Arai Kousuke on 2021/04/04.
-//
-
 import UIKit
 
-class TopTableViewController: UITableViewController {
-    
-    
-    let user1 = userModel(name: "kousuke", birthday: "2020/10/29", job: "学生")
-    let user2 = userModel(name: "tom", birthday: "2020/10/29", job: "ニート")
-    let user3 = userModel(name: "さいおんじ", birthday: "2020/10/29", job: "サラリーマン")
-    
-    // 年齢、生年月日、職業
-    var userInfoList:[userModel] = []
+class TopTableViewController: UITableViewController{
 
+    let defaults = UserDefaults.standard
+    let userInfoListKey = "userInfoList"
+    
+    var userInfoList:[userModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userInfoList.append(user1)
-        userInfoList.append(user2)
-        userInfoList.append(user3)
 
     }
-
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -62,4 +46,18 @@ class TopTableViewController: UITableViewController {
         performSegue(withIdentifier: "goInputUserInfoVC", sender: nil)
     }
     
+    //　selfからsegue利用したときに呼ばれるメソッド
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goInputUserInfoVC" {
+            let inputUserInfoVC = segue.destination as? InputUserInfoViewController
+            inputUserInfoVC?.delegate = self
+        }
+    }
+}
+
+extension TopTableViewController: InputUserInfoDelegate{
+    func saveToUserDefaults(userInfo: userModel) {
+        userInfoList.append(userInfo)
+        tableView.reloadData()
+    }
 }

@@ -92,17 +92,79 @@
                     <view key="view" contentMode="scaleToFill" id="dG3-am-FX2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="職業" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DsN-u9-Ty4">
+                                <rect key="frame" x="43" y="431" width="329" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Jq9-sb-nff"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生年月日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="feL-ON-SNq">
+                                <rect key="frame" x="43" y="350" width="329" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="lTf-ur-IQL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lW-Mi-gv5">
+                                <rect key="frame" x="43" y="274" width="329" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="CHR-z4-wki"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fin-6A-c3V">
+                                <rect key="frame" x="51" y="586" width="312" height="37"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="YHa-Lo-6Ue"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="ユーザー追加して一覧に戻る">
+                                    <color key="titleColor" red="0.92157477139999999" green="0.92155748609999999" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="addUserButtonDidTapped:" destination="Hct-oc-SaO" eventType="touchUpInside" id="VqB-5M-FLe"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qGD-1M-B47"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5lW-Mi-gv5" firstAttribute="leading" secondItem="qGD-1M-B47" secondAttribute="leading" constant="43" id="9cv-nI-gPe"/>
+                            <constraint firstItem="DsN-u9-Ty4" firstAttribute="leading" secondItem="qGD-1M-B47" secondAttribute="leading" constant="43" id="Bgb-tP-uuV"/>
+                            <constraint firstItem="qGD-1M-B47" firstAttribute="trailing" secondItem="DsN-u9-Ty4" secondAttribute="trailing" constant="42" id="Lu6-fU-prf"/>
+                            <constraint firstItem="qGD-1M-B47" firstAttribute="trailing" secondItem="Fin-6A-c3V" secondAttribute="trailing" constant="51" id="Muz-gW-yGa"/>
+                            <constraint firstItem="Fin-6A-c3V" firstAttribute="top" secondItem="DsN-u9-Ty4" secondAttribute="bottom" constant="121" id="b4J-fg-Zoy"/>
+                            <constraint firstItem="Fin-6A-c3V" firstAttribute="leading" secondItem="qGD-1M-B47" secondAttribute="leading" constant="51" id="cEC-F8-I5c"/>
+                            <constraint firstItem="qGD-1M-B47" firstAttribute="trailing" secondItem="5lW-Mi-gv5" secondAttribute="trailing" constant="42" id="idp-gH-oxm"/>
+                            <constraint firstItem="DsN-u9-Ty4" firstAttribute="top" secondItem="feL-ON-SNq" secondAttribute="bottom" constant="47" id="nDM-X3-God"/>
+                            <constraint firstItem="feL-ON-SNq" firstAttribute="leading" secondItem="qGD-1M-B47" secondAttribute="leading" constant="43" id="o80-WM-aZg"/>
+                            <constraint firstItem="DsN-u9-Ty4" firstAttribute="centerY" secondItem="dG3-am-FX2" secondAttribute="centerY" id="tKO-DZ-pA6"/>
+                            <constraint firstItem="feL-ON-SNq" firstAttribute="top" secondItem="5lW-Mi-gv5" secondAttribute="bottom" constant="42" id="vF3-PG-GGv"/>
+                            <constraint firstItem="qGD-1M-B47" firstAttribute="trailing" secondItem="feL-ON-SNq" secondAttribute="trailing" constant="42" id="ylo-Je-bme"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ILo-RO-rtt"/>
+                    <connections>
+                        <outlet property="birthDayTextField" destination="feL-ON-SNq" id="Ohv-5o-4S7"/>
+                        <outlet property="jobTextField" destination="DsN-u9-Ty4" id="tFP-1e-oR6"/>
+                        <outlet property="userNameTextField" destination="5lW-Mi-gv5" id="xHc-Ta-9rP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3v-f3-jck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="94"/>
+            <point key="canvasLocation" x="871.01449275362324" y="93.75"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
