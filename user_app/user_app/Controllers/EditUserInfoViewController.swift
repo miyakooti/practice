@@ -31,13 +31,13 @@ class EditUserInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(userNameText)
         userNameTextField.text = userNameText
         birthDayTextField.text = birthDayText
         jobTextField.text = jobText
     }
     
     @IBAction func backButtonDidTapped(_ sender: Any) {
+        
         if userNameTextField.text != "" && birthDayTextField.text != "" && jobTextField.text != "" {
             
         let userInfo = userInfoModel(name: userNameTextField.text!,  birthday: birthDayTextField.text!, job: jobTextField.text!)

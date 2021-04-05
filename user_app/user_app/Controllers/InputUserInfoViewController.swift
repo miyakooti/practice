@@ -21,7 +21,6 @@ class InputUserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
     }
     
@@ -43,8 +42,6 @@ class InputUserInfoViewController: UIViewController {
             presentAlert()
         }
     }
-    
-    
     
     func presentAlert(){
         let alertController = UIAlertController(title: "すべての項目を入力してください", message: nil, preferredStyle: .alert)

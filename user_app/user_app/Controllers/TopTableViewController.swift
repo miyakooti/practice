@@ -9,8 +9,7 @@ class TopTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 起動時だけしか読み込まないけど、見た目的にはここでいい気がする。一覧表示するたびに読み込むにはたぶんviewWillAppear?
+        // 起動時だけしか読み込まないけど、見た目的にはここでいい気がする。
         userInfoList = JsonEncoder.readItemsFromUserDefaults()!
 
     }
@@ -71,7 +70,8 @@ class TopTableViewController: UITableViewController{
             editUserInfoVC?.delegate = self
             let indexPath = tableView.indexPathForSelectedRow
             let userInfo = userInfoList[indexPath!.row]
-            // iboutletに直接代入すると、なぜかエラー
+            
+            // iboutletに直接代入すると、なぜかエラーおきるので、一旦String変数に渡す
             editUserInfoVC?.userNameText = userInfo.name
             editUserInfoVC?.birthDayText = userInfo.birthday
             editUserInfoVC?.jobText = userInfo.job
@@ -98,4 +98,5 @@ extension TopTableViewController: EditUserInfoDelegate{
         userInfoList[indexPath.row] = userInfo
         JsonEncoder.saveItemsToUserDefaults(userInfoList: userInfoList)
         tableView.reloadData()
-    }}
+    }
+}
