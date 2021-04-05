@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditUserInfoDelegate {
-    func editUserInfo(userInfo:userInfoModel, indexPath: IndexPath)
+    func editUserInfo(userName: String, birthDay: String, job:String, indexPath: IndexPath)
 }
 
 class EditUserInfoViewController: UIViewController {
@@ -40,9 +40,9 @@ class EditUserInfoViewController: UIViewController {
     @IBAction func backButtonDidTapped(_ sender: Any) {
         if userNameTextField.text != "" && birthDayTextField.text != "" && jobTextField.text != "" {
             
-        let userInfo = userInfoModel(name: userNameTextField.text!,  birthday: birthDayTextField.text!, job: jobTextField.text!)
-        delegate?.editUserInfo(userInfo: userInfo, indexPath: indexPath)
-        dismiss(animated: true, completion: nil)
+            
+            delegate?.editUserInfo(userName: userNameTextField.text!, birthDay: birthDayTextField.text!, job: jobTextField.text!, indexPath: indexPath)
+            dismiss(animated: true, completion: nil)
             
         } else {
             presentAlert()

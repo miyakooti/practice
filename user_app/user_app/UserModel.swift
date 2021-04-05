@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct userInfoModel: Codable {
-    let name:String
-    let birthday:String
-    let job:String
+class UserModel: Object{
+    @objc dynamic var id: Int = 0
+    @objc dynamic var userName: String = ""
+    @objc dynamic var birthDay: String = ""
+    @objc dynamic var job: String = ""
 }

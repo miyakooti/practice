@@ -1,19 +1,28 @@
 import UIKit
-
-//　大域変数にしたいけど、かくばしょはここであっているのだろうか、、
-let defaults = UserDefaults.standard
+import RealmSwift
 
 class TopTableViewController: UITableViewController{
 
-    var userInfoList:[userInfoModel] = []
+    
+    // 普通のリストと同じように扱っていい。通常のクラスと同じ。
+    var userInfoList: Results<UserModel>!
+    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 起動時だけしか読み込まないけど、見た目的にはここでいい気がする。一覧表示するたびに読み込むにはたぶんviewWillAppear?
-        userInfoList = JsonEncoder.readItemsFromUserDefaults()!
+        updateUserInfoList()
+        tableView.reloadData()
 
     }
+    
+    // dismissしたときに呼ばれないっぽい。多分シート型になってるせい。
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print(realm.objects(UserModel.self))
+
+    }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -40,8 +49,8 @@ class TopTableViewController: UITableViewController{
         let birthDayLabel = cell?.contentView.viewWithTag(2) as! UILabel
         let jobLabel = cell?.contentView.viewWithTag(3) as! UILabel
         
-        userNameLabel.text = userInfo.name
-        birthDayLabel.text = userInfo.birthday
+        userNameLabel.text = userInfo.userName
+        birthDayLabel.text = userInfo.birthDay
         jobLabel.text = userInfo.job
         
         return cell!
@@ -65,6 +74,7 @@ class TopTableViewController: UITableViewController{
             let inputUserInfoVC = segue.destination as? InputUserInfoViewController
             inputUserInfoVC?.delegate = self
             
+            
         } else if segue.identifier == "goEditUserInfoVC" {
             
             let editUserInfoVC = segue.destination as? EditUserInfoViewController
@@ -72,30 +82,55 @@ class TopTableViewController: UITableViewController{
             let indexPath = tableView.indexPathForSelectedRow
             let userInfo = userInfoList[indexPath!.row]
             // iboutletに直接代入すると、なぜかエラー
-            editUserInfoVC?.userNameText = userInfo.name
-            editUserInfoVC?.birthDayText = userInfo.birthday
+            editUserInfoVC?.userNameText = userInfo.userName
+            editUserInfoVC?.birthDayText = userInfo.birthDay
             editUserInfoVC?.jobText = userInfo.job
             editUserInfoVC?.indexPath = indexPath!
             
         }
     }
+    
+    func updateUserInfoList() {
+        userInfoList = realm.objects(UserModel.self)
+    }
 
 }
 
 extension TopTableViewController: InputUserInfoDelegate{
-    func addUserInfo(userInfo: userInfoModel) {
-
-        userInfoList.append(userInfo)
+    func addUserInfo(userName: String, birthDay: String, job: String) {
         
-//        A default object must be a property list—that is, an instance of (or for collections, a combination of instances of) NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to stｆore any other type of object, you should typically archive it to create an instance of NSData.
-        JsonEncoder.saveItemsToUserDefaults(userInfoList: userInfoList)
+        let userInfo = UserModel()
+        
+        // realmでも動機とか実装しないなら、通常のクラスとだいたい同じ。
+        userInfo.id = userInfoList.count
+        userInfo.userName = userName
+        userInfo.birthDay = birthDay
+        userInfo.job = job
+        
+        try! realm.write {
+            realm.add(userInfo)
+            print("addされました。\(userInfo)")
+        }
+        
+        updateUserInfoList()
         tableView.reloadData()
+
     }
 }
 
 extension TopTableViewController: EditUserInfoDelegate{
-    func editUserInfo(userInfo: userInfoModel, indexPath: IndexPath) {
-        userInfoList[indexPath.row] = userInfo
-        JsonEncoder.saveItemsToUserDefaults(userInfoList: userInfoList)
+    
+    func editUserInfo(userName: String, birthDay: String, job: String, indexPath: IndexPath) {
+        let theUserInfo = realm.objects(UserModel.self).filter("id == \(indexPath.row)").first
+        // firstいれないとリスト型になってしまう。
+        try! realm.write {
+            theUserInfo!.userName = userName
+            theUserInfo!.birthDay = birthDay
+            theUserInfo!.job = job
+        }
+        
+        updateUserInfoList()
         tableView.reloadData()
-    }}
+
+    }
+}

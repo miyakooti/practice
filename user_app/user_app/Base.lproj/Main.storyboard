@@ -78,7 +78,7 @@
                     </tableView>
                     <connections>
                         <outlet property="tableView" destination="ugl-LV-X6p" id="MxC-Kg-Qw3"/>
-                        <segue destination="Hct-oc-SaO" kind="presentation" identifier="goInputUserInfoVC" id="sCv-hw-1wp"/>
+                        <segue destination="Hct-oc-SaO" kind="show" identifier="goInputUserInfoVC" id="sCv-hw-1wp"/>
                         <segue destination="7fD-DS-2hT" kind="show" identifier="goEditUserInfoVC" id="OAP-VN-fp0"/>
                     </connections>
                 </tableViewController>

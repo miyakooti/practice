@@ -8,7 +8,7 @@
 import UIKit
 
 protocol InputUserInfoDelegate {
-    func addUserInfo(userInfo: userInfoModel)
+    func addUserInfo(userName: String, birthDay: String, job:String)
 }
 
 class InputUserInfoViewController: UIViewController {
@@ -19,6 +19,8 @@ class InputUserInfoViewController: UIViewController {
     @IBOutlet weak var birthDayTextField: UITextField!
     @IBOutlet weak var jobTextField: UITextField!
     
+    var indexPath:IndexPath = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,10 +34,8 @@ class InputUserInfoViewController: UIViewController {
             let birthDay:String = birthDayTextField.text!
             let job:String = jobTextField.text!
 
-            let userInfo = userInfoModel(name: userName, birthday: birthDay, job: job)
-            
             //topVCに実行させる
-            delegate?.addUserInfo(userInfo: userInfo)
+            delegate?.addUserInfo(userName: userName, birthDay: birthDay, job: job)
             
             dismiss(animated: true, completion: nil)
             
