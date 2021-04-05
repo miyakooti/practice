@@ -8,7 +8,7 @@
 import UIKit
 
 protocol InputUserInfoDelegate {
-    func saveToUserDefaults(userInfo: userModel)
+    func addUserInfo(userInfo: userInfoModel)
 }
 
 class InputUserInfoViewController: UIViewController {
@@ -22,7 +22,6 @@ class InputUserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
 
     }
     
@@ -33,17 +32,26 @@ class InputUserInfoViewController: UIViewController {
             let birthDay:String = birthDayTextField.text!
             let job:String = jobTextField.text!
 
-            let userInfo = userModel(name: userName, birthday: birthDay, job: job)
+            let userInfo = userInfoModel(name: userName, birthday: birthDay, job: job)
             
             //topVCに実行させる
-            delegate?.saveToUserDefaults(userInfo: userInfo)
+            delegate?.addUserInfo(userInfo: userInfo)
             
             dismiss(animated: true, completion: nil)
             
+        } else {
+            presentAlert()
         }
     }
     
-
+    
+    
+    func presentAlert(){
+        let alertController = UIAlertController(title: "すべての項目を入力してください", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "わかりました", style: .cancel, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
 
 }
 

@@ -79,11 +79,65 @@
                     <connections>
                         <outlet property="tableView" destination="ugl-LV-X6p" id="MxC-Kg-Qw3"/>
                         <segue destination="Hct-oc-SaO" kind="presentation" identifier="goInputUserInfoVC" id="sCv-hw-1wp"/>
+                        <segue destination="7fD-DS-2hT" kind="show" identifier="goEditUserInfoVC" id="OAP-VN-fp0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PtU-Ka-ja4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11.594202898550726" y="93.75"/>
+        </scene>
+        <!--Edit User Info View Controller-->
+        <scene sceneID="vPg-w8-X0y">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="7fD-DS-2hT" customClass="EditUserInfoViewController" customModule="user_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Myy-0a-dfh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生年月日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-Sk-fjP">
+                                <rect key="frame" x="45" y="432" width="323" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="職業" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PzD-dm-jOm">
+                                <rect key="frame" x="43" y="513" width="323" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFF-Ze-x1X">
+                                <rect key="frame" x="73" y="750" width="267" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="変更して一覧に戻る">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonDidTapped:" destination="7fD-DS-2hT" eventType="touchUpInside" id="Ks1-lH-iy7"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-bQ-yho">
+                                <rect key="frame" x="43" y="356" width="323" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qrx-jq-3Fb"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kl7-gt-M5X"/>
+                    <connections>
+                        <outlet property="birthDayTextField" destination="EJy-Sk-fjP" id="cPc-UU-fJT"/>
+                        <outlet property="jobTextField" destination="PzD-dm-jOm" id="h46-5E-H71"/>
+                        <outlet property="userNameTextField" destination="QaM-bQ-yho" id="NCu-BR-PaB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O6p-Dn-Ekx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="869.56521739130437" y="-577.23214285714278"/>
         </scene>
         <!--Input User Info View Controller-->
         <scene sceneID="bv2-QC-uvF">

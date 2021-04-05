@@ -15,6 +15,9 @@
 		D1312B3D261956100004B4CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1312B3B261956100004B4CB /* LaunchScreen.storyboard */; };
 		D1312B49261956D40004B4CB /* TopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1312B48261956D40004B4CB /* TopTableViewController.swift */; };
 		D1312B4E261959280004B4CB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1312B4D261959280004B4CB /* UserModel.swift */; };
+		D1312B6D2619B6E20004B4CB /* JsonEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1312B6C2619B6E20004B4CB /* JsonEncoder.swift */; };
+		D1312B702619B7710004B4CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1312B6F2619B7710004B4CB /* Constants.swift */; };
+		D1312B73261A7DB10004B4CB /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1312B72261A7DB10004B4CB /* EditUserInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		D1312B3E261956110004B4CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1312B48261956D40004B4CB /* TopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTableViewController.swift; sourceTree = "<group>"; };
 		D1312B4D261959280004B4CB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D1312B6C2619B6E20004B4CB /* JsonEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEncoder.swift; sourceTree = "<group>"; };
+		D1312B6F2619B7710004B4CB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D1312B72261A7DB10004B4CB /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +69,10 @@
 				D1312B30261956100004B4CB /* AppDelegate.swift */,
 				D1312B32261956100004B4CB /* SceneDelegate.swift */,
 				D1312B4D261959280004B4CB /* UserModel.swift */,
+				D1312B6F2619B7710004B4CB /* Constants.swift */,
 				D1312B47261956AC0004B4CB /* Controllers */,
 				D1312B36261956100004B4CB /* Main.storyboard */,
+				D1312B6C2619B6E20004B4CB /* JsonEncoder.swift */,
 				D1312B39261956100004B4CB /* Assets.xcassets */,
 				D1312B3B261956100004B4CB /* LaunchScreen.storyboard */,
 				D1312B3E261956110004B4CB /* Info.plist */,
@@ -77,6 +85,7 @@
 			children = (
 				D1312B34261956100004B4CB /* InputUserInfoViewController.swift */,
 				D1312B48261956D40004B4CB /* TopTableViewController.swift */,
+				D1312B72261A7DB10004B4CB /* EditUserInfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -155,6 +164,9 @@
 				D1312B49261956D40004B4CB /* TopTableViewController.swift in Sources */,
 				D1312B31261956100004B4CB /* AppDelegate.swift in Sources */,
 				D1312B4E261959280004B4CB /* UserModel.swift in Sources */,
+				D1312B702619B7710004B4CB /* Constants.swift in Sources */,
+				D1312B6D2619B6E20004B4CB /* JsonEncoder.swift in Sources */,
+				D1312B73261A7DB10004B4CB /* EditUserInfoViewController.swift in Sources */,
 				D1312B33261956100004B4CB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

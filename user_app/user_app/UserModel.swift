@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct userModel {
+struct userInfoModel: Codable {
     let name:String
     let birthday:String
     let job:String
