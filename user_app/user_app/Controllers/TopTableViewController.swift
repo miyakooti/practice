@@ -3,8 +3,9 @@ import RealmSwift
 
 class TopTableViewController: UITableViewController{
 
-    
-    // 普通のリストと同じように扱っていい。通常のクラスと同じ。
+    // 普通のリストと同じように扱っていい。通常のクラスとほぼ同じ。
+    // structで同じの作るとすれば、下のようになる。
+    // var userInfoList:[UserModel] = []
     var userInfoList: Results<UserModel>!
     
     let realm = try! Realm()
@@ -12,18 +13,13 @@ class TopTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUserInfoList()
-        tableView.reloadData()
-
     }
     
     // dismissしたときに呼ばれないっぽい。多分シート型になってるせい。
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        print(realm.objects(UserModel.self))
-
     }
     
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -41,6 +37,8 @@ class TopTableViewController: UITableViewController{
 //        ここでdefaults読み込んではいけない理由の考察：
 //        読み込む前にnumOfRowInSectionしていると考えられる。読み込む前はuserInfoListは空なので0が返されるため、表示されない。
 //        userInfoList = readItemsFromUserDefaults()!
+        
+        //　実行される順番を把握するのって、めちゃ重要。ライフサイクルメソッドとかも把握するべき。
 
         let userInfo = userInfoList[indexPath.row]
         
@@ -109,9 +107,9 @@ extension TopTableViewController: InputUserInfoDelegate{
         
         try! realm.write {
             realm.add(userInfo)
-            print("addされました。\(userInfo)")
         }
         
+//        tableViewはライフサイクルメソッドの実行順把握してないと、ハマりやすい
         updateUserInfoList()
         tableView.reloadData()
 
@@ -121,8 +119,8 @@ extension TopTableViewController: InputUserInfoDelegate{
 extension TopTableViewController: EditUserInfoDelegate{
     
     func editUserInfo(userName: String, birthDay: String, job: String, indexPath: IndexPath) {
-        let theUserInfo = realm.objects(UserModel.self).filter("id == \(indexPath.row)").first
-        // firstいれないとリスト型になってしまう。
+        let theUserInfo = realm.objects(UserModel.self).filter("id == \(indexPath.row)").first // firstいれないとリスト型になってしまう。
+        
         try! realm.write {
             theUserInfo!.userName = userName
             theUserInfo!.birthDay = birthDay
@@ -134,3 +132,5 @@ extension TopTableViewController: EditUserInfoDelegate{
 
     }
 }
+
+//データの保存処理は全部ここでやりたい

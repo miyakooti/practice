@@ -31,7 +31,6 @@ class EditUserInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(userNameText)
         userNameTextField.text = userNameText
         birthDayTextField.text = birthDayText
         jobTextField.text = jobText
@@ -39,7 +38,6 @@ class EditUserInfoViewController: UIViewController {
     
     @IBAction func backButtonDidTapped(_ sender: Any) {
         if userNameTextField.text != "" && birthDayTextField.text != "" && jobTextField.text != "" {
-            
             
             delegate?.editUserInfo(userName: userNameTextField.text!, birthDay: birthDayTextField.text!, job: jobTextField.text!, indexPath: indexPath)
             dismiss(animated: true, completion: nil)
@@ -56,5 +54,4 @@ class EditUserInfoViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-
 }

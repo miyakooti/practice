@@ -94,22 +94,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生年月日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-Sk-fjP">
-                                <rect key="frame" x="45" y="432" width="323" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生年月日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-Sk-fjP">
+                                <rect key="frame" x="45" y="431" width="323" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ayw-an-3Ow"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="職業" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PzD-dm-jOm">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="職業" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PzD-dm-jOm">
                                 <rect key="frame" x="43" y="513" width="323" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="9fw-A9-hhx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFF-Ze-x1X">
-                                <rect key="frame" x="73" y="750" width="267" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-bQ-yho">
+                                <rect key="frame" x="43" y="356" width="323" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="3ng-rz-iOB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFF-Ze-x1X">
+                                <rect key="frame" x="71" y="663" width="267" height="34"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ydV-fe-0rZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="変更して一覧に戻る">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -118,15 +132,23 @@
                                     <action selector="backButtonDidTapped:" destination="7fD-DS-2hT" eventType="touchUpInside" id="Ks1-lH-iy7"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-bQ-yho">
-                                <rect key="frame" x="43" y="356" width="323" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qrx-jq-3Fb"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qrx-jq-3Fb" firstAttribute="trailing" secondItem="LFF-Ze-x1X" secondAttribute="trailing" constant="76" id="79p-Yw-mPj"/>
+                            <constraint firstItem="QaM-bQ-yho" firstAttribute="leading" secondItem="qrx-jq-3Fb" secondAttribute="leading" constant="43" id="GqZ-IO-9Im"/>
+                            <constraint firstItem="EJy-Sk-fjP" firstAttribute="top" secondItem="QaM-bQ-yho" secondAttribute="bottom" constant="41" id="Jjf-VB-0u1"/>
+                            <constraint firstItem="qrx-jq-3Fb" firstAttribute="trailing" secondItem="QaM-bQ-yho" secondAttribute="trailing" constant="48" id="UK4-hS-0FA"/>
+                            <constraint firstItem="PzD-dm-jOm" firstAttribute="leading" secondItem="qrx-jq-3Fb" secondAttribute="leading" constant="43" id="aTj-jo-aNF"/>
+                            <constraint firstItem="LFF-Ze-x1X" firstAttribute="top" secondItem="PzD-dm-jOm" secondAttribute="bottom" constant="116" id="fbV-Gu-TgR"/>
+                            <constraint firstItem="LFF-Ze-x1X" firstAttribute="leading" secondItem="qrx-jq-3Fb" secondAttribute="leading" constant="71" id="gnb-MO-aAj"/>
+                            <constraint firstItem="EJy-Sk-fjP" firstAttribute="centerY" secondItem="Myy-0a-dfh" secondAttribute="centerY" id="i5t-B5-o1P"/>
+                            <constraint firstItem="qrx-jq-3Fb" firstAttribute="trailing" secondItem="PzD-dm-jOm" secondAttribute="trailing" constant="48" id="kyd-cX-eg5"/>
+                            <constraint firstItem="PzD-dm-jOm" firstAttribute="top" secondItem="EJy-Sk-fjP" secondAttribute="bottom" constant="48" id="lH3-jD-CTv"/>
+                            <constraint firstItem="EJy-Sk-fjP" firstAttribute="leading" secondItem="qrx-jq-3Fb" secondAttribute="leading" constant="45" id="u8X-MF-Urf"/>
+                            <constraint firstItem="qrx-jq-3Fb" firstAttribute="trailing" secondItem="EJy-Sk-fjP" secondAttribute="trailing" constant="46" id="xt4-HK-wwe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kl7-gt-M5X"/>
                     <connections>
