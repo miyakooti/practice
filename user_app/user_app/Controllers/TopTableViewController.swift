@@ -1,16 +1,15 @@
 import UIKit
 
-class TopTableViewController: UITableViewController{
+final class TopTableViewController: UITableViewController{
 
-    var users:[User] = []
-    let showEditUserInfoId = "showEditUserInfoVC"
-    let showInputUserInfoId = "goInputUserInfoVC"
+    private var users:[User] = []
+    private let showEditUserInfoId = "showEditUserInfoVC"
+    private let showInputUserInfoId = "goInputUserInfoVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         users = JsonEncoder.readItemsFromUserDefaults()!
         tableView.register(TopTableViewCell.nib(), forCellReuseIdentifier: TopTableViewCell.identifier)
-
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,11 +21,8 @@ class TopTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //基本的にcellは一番上で定義
         let cell = tableView.dequeueReusableCell(withIdentifier: TopTableViewCell.identifier) as! TopTableViewCell
         let user = users[indexPath.row]
-        //　ビューの仕事なのでビューに任せる
         cell.configure(user: user)
         return cell
     }
@@ -42,14 +38,10 @@ class TopTableViewController: UITableViewController{
     
     //　selfからsegue利用したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == showInputUserInfoId {
-            
             let inputUserInfoVC = segue.destination as? InputUserInfoViewController
             inputUserInfoVC?.delegate = self
-            
         } else if segue.identifier == showEditUserInfoId {
-            
             let editUserInfoVC = segue.destination as? EditUserInfoViewController
             editUserInfoVC?.delegate = self
             let indexPath = tableView.indexPathForSelectedRow
@@ -60,10 +52,8 @@ class TopTableViewController: UITableViewController{
             editUserInfoVC?.birthDayText = userInfo.birthday
             editUserInfoVC?.jobText = userInfo.job
             editUserInfoVC?.indexPath = indexPath!
-            
         }
     }
-
 }
 
 extension TopTableViewController: InputUserInfoDelegate{

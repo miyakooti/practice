@@ -3,7 +3,7 @@
 //  user_app
 //
 //  Created by Arai Kousuke on 2021/04/04.
-//
+//　おｋ
 
 import UIKit
 
@@ -29,7 +29,7 @@ final class InputUserInfoViewController: UIViewController {
             AlertPresenter.presentAlert(viewController: self, controllerTitle: controllerTitle, actionTitle: actionTitle)
             return
         }
-        // guardのあとの条件文が保証されている。
+        // guardのあとの条件文が保証されている状態での処理。
         let user = User(name: userNameText, birthday: birthDayText, job: jobText)
         //topVCに実行させる
         delegate?.addUser(user: user)
