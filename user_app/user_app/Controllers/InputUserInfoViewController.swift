@@ -8,47 +8,34 @@
 import UIKit
 
 protocol InputUserInfoDelegate {
-    func addUserInfo(userInfo: userInfoModel)
+    func addUser(user: User)
 }
 
-class InputUserInfoViewController: UIViewController {
+final class InputUserInfoViewController: UIViewController {
     
     var delegate: InputUserInfoDelegate?
+    let controllerTitle = "すべての項目を入力してください"
+    let actionTitle = "わかりました"
 
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var birthDayTextField: UITextField!
     @IBOutlet weak var jobTextField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-    }
-    
     @IBAction func addUserButtonDidTapped(_ sender: Any) {
-        if userNameTextField.text != "" && birthDayTextField.text != "" && jobTextField.text != ""{
-            
-            let userName:String = userNameTextField.text!
-            let birthDay:String = birthDayTextField.text!
-            let job:String = jobTextField.text!
-
-            let userInfo = userInfoModel(name: userName, birthday: birthDay, job: job)
-            
-            //topVCに実行させる
-            delegate?.addUserInfo(userInfo: userInfo)
-            
-            dismiss(animated: true, completion: nil)
-            
-        } else {
-            presentAlert()
+        guard let userNameText = userNameTextField.text,
+              let birthDayText = birthDayTextField.text,
+              let jobText = jobTextField.text,
+              !userNameText.isEmpty && !birthDayText.isEmpty && !jobText.isEmpty else {
+            AlertPresenter.presentAlert(viewController: self, controllerTitle: controllerTitle, actionTitle: actionTitle)
+            return
         }
+        // guardのあとの条件文が保証されている。
+        let user = User(name: userNameText, birthday: birthDayText, job: jobText)
+        //topVCに実行させる
+        delegate?.addUser(user: user)
+        // 破棄しているのでviewDidLoad呼ばれる。
+        dismiss(animated: true, completion: nil)
     }
     
-    func presentAlert(){
-        let alertController = UIAlertController(title: "すべての項目を入力してください", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "わかりました", style: .cancel, handler: nil)
-        alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
 }
 

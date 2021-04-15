@@ -1,25 +1,20 @@
 import UIKit
 
-//　大域変数にしたいけど、かくばしょはここであっているのだろうか、、
-let defaults = UserDefaults.standard
-
 class TopTableViewController: UITableViewController{
 
-    var userInfoList:[userInfoModel] = []
+    var users:[User] = []
+    let showEditUserInfoId = "showEditUserInfoVC"
+    let showInputUserInfoId = "goInputUserInfoVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 起動時だけしか読み込まないけど、見た目的にはここでいい気がする。
-        userInfoList = JsonEncoder.readItemsFromUserDefaults()!
+        users = JsonEncoder.readItemsFromUserDefaults()!
+        tableView.register(TopTableViewCell.nib(), forCellReuseIdentifier: TopTableViewCell.identifier)
 
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userInfoList.count
+        return users.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -28,48 +23,37 @@ class TopTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        ここでdefaults読み込んではいけない理由の考察：
-//        読み込む前にnumOfRowInSectionしていると考えられる。読み込む前はuserInfoListは空なので0が返されるため、表示されない。
-//        userInfoList = readItemsFromUserDefaults()!
-
-        let userInfo = userInfoList[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
-        let userNameLabel = cell?.contentView.viewWithTag(1) as! UILabel
-        let birthDayLabel = cell?.contentView.viewWithTag(2) as! UILabel
-        let jobLabel = cell?.contentView.viewWithTag(3) as! UILabel
-        
-        userNameLabel.text = userInfo.name
-        birthDayLabel.text = userInfo.birthday
-        jobLabel.text = userInfo.job
-        
-        return cell!
-
+        //基本的にcellは一番上で定義
+        let cell = tableView.dequeueReusableCell(withIdentifier: TopTableViewCell.identifier) as! TopTableViewCell
+        let user = users[indexPath.row]
+        //　ビューの仕事なのでビューに任せる
+        cell.configure(user: user)
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goEditUserInfoVC", sender: nil)
+        performSegue(withIdentifier: showEditUserInfoId, sender: nil)
     }
 
 
     @IBAction func buttonDidTapped(_ sender: Any) {
-        performSegue(withIdentifier: "goInputUserInfoVC", sender: nil)
+        performSegue(withIdentifier: showInputUserInfoId, sender: nil)
     }
     
     //　selfからsegue利用したときに呼ばれるメソッド
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "goInputUserInfoVC" {
+        if segue.identifier == showInputUserInfoId {
             
             let inputUserInfoVC = segue.destination as? InputUserInfoViewController
             inputUserInfoVC?.delegate = self
             
-        } else if segue.identifier == "goEditUserInfoVC" {
+        } else if segue.identifier == showEditUserInfoId {
             
             let editUserInfoVC = segue.destination as? EditUserInfoViewController
             editUserInfoVC?.delegate = self
             let indexPath = tableView.indexPathForSelectedRow
-            let userInfo = userInfoList[indexPath!.row]
+            let userInfo = users[indexPath!.row]
             
             // iboutletに直接代入すると、なぜかエラーおきるので、一旦String変数に渡す
             editUserInfoVC?.userNameText = userInfo.name
@@ -83,20 +67,17 @@ class TopTableViewController: UITableViewController{
 }
 
 extension TopTableViewController: InputUserInfoDelegate{
-    func addUserInfo(userInfo: userInfoModel) {
-
-        userInfoList.append(userInfo)
-        
-//        A default object must be a property list—that is, an instance of (or for collections, a combination of instances of) NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to stｆore any other type of object, you should typically archive it to create an instance of NSData.
-        JsonEncoder.saveItemsToUserDefaults(userInfoList: userInfoList)
+    func addUser(user: User) {
+        users.append(user)
+        JsonEncoder.saveItemsToUserDefaults(users: users)
         tableView.reloadData()
     }
 }
 
 extension TopTableViewController: EditUserInfoDelegate{
-    func editUserInfo(userInfo: userInfoModel, indexPath: IndexPath) {
-        userInfoList[indexPath.row] = userInfo
-        JsonEncoder.saveItemsToUserDefaults(userInfoList: userInfoList)
+    func editUserInfo(userInfo: User, indexPath: IndexPath) {
+        users[indexPath.row] = userInfo
+        JsonEncoder.saveItemsToUserDefaults(users: users)
         tableView.reloadData()
     }
 }

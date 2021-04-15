@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditUserInfoDelegate {
-    func editUserInfo(userInfo:userInfoModel, indexPath: IndexPath)
+    func editUserInfo(userInfo:User, indexPath: IndexPath)
 }
 
 class EditUserInfoViewController: UIViewController {
@@ -40,7 +40,7 @@ class EditUserInfoViewController: UIViewController {
         
         if userNameTextField.text != "" && birthDayTextField.text != "" && jobTextField.text != "" {
             
-        let userInfo = userInfoModel(name: userNameTextField.text!,  birthday: birthDayTextField.text!, job: jobTextField.text!)
+        let userInfo = User(name: userNameTextField.text!,  birthday: birthDayTextField.text!, job: jobTextField.text!)
         delegate?.editUserInfo(userInfo: userInfo, indexPath: indexPath)
         dismiss(animated: true, completion: nil)
             
