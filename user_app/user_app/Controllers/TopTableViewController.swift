@@ -4,7 +4,7 @@ final class TopTableViewController: UITableViewController{
 
     private var users:[User] = []
     private let showEditUserInfoId = "showEditUserInfoVC"
-    private let showInputUserInfoId = "goInputUserInfoVC"
+    private let showInputUserInfoId = "showInputUserInfoVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()

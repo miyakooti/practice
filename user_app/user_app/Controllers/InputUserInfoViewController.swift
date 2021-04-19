@@ -14,14 +14,14 @@ protocol InputUserInfoDelegate {
 final class InputUserInfoViewController: UIViewController {
     
     var delegate: InputUserInfoDelegate?
-    let controllerTitle = "すべての項目を入力してください"
-    let actionTitle = "わかりました"
+    private let controllerTitle = "すべての項目を入力してください"
+    private let actionTitle = "わかりました"
 
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var birthDayTextField: UITextField!
-    @IBOutlet weak var jobTextField: UITextField!
+    @IBOutlet private weak var userNameTextField: UITextField!
+    @IBOutlet private weak var birthDayTextField: UITextField!
+    @IBOutlet private weak var jobTextField: UITextField!
 
-    @IBAction func addUserButtonDidTapped(_ sender: Any) {
+    @IBAction private func addUserButtonDidTapped(_ sender: Any) {
         guard let userNameText = userNameTextField.text,
               let birthDayText = birthDayTextField.text,
               let jobText = jobTextField.text,
