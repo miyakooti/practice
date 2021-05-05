@@ -8,3 +8,4 @@ extension String {
     }
 }
 print("hoge".printTwice())
+
