@@ -6,7 +6,8 @@ import PlaygroundSupport
 
 
 
-// GCD ---------------------------
+
+// GCD ---------------------------------------------------------------------------------
 
 //メインキューとグローバルキューがある。メインキューは直列。グローバルキューは並列で、優先度を指定する。
 
@@ -32,3 +33,37 @@ globalQueueUserInitiated.async {
 }
 
 print("同期の処理です") // こっちのほうが早く出力される
+
+// スレッドの処理が比較的単純なときに使うらしい
+
+
+
+
+// operation ---------------------------------------------------------------------------
+
+class SomeOperation: Operation {
+    
+    let number: Int
+    init(number: Int) {
+        self.number = number
+    }
+    
+    override func main() {
+        Thread.sleep(forTimeInterval: 1)
+        print(number)
+    }
+}
+
+let operationQueue = OperationQueue()
+operationQueue.name = "こんにちは"
+operationQueue.maxConcurrentOperationCount = 2
+operationQueue.qualityOfService = .userInitiated // 優先度的なやつ
+
+var operations = [SomeOperation]()
+
+for i in 0...11 {
+    operations.append(SomeOperation(number: i))
+}
+
+operationQueue.addOperations(operations, waitUntilFinished: false)
+print("operations are added") // 0 1 2 3 4 5 6 7 8 9 11 10
