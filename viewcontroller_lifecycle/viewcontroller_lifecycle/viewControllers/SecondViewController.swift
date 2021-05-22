@@ -15,6 +15,7 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func backButtonDidTapper(_ sender: Any) {
+        print("modalから戻ります")
         dismiss(animated: true, completion: nil)
     }
     

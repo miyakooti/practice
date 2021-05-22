@@ -15,8 +15,6 @@
 		D11C59112658A023007C83F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11C590F2658A023007C83F2 /* LaunchScreen.storyboard */; };
 		D11C591A2658A417007C83F2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C59192658A417007C83F2 /* SecondViewController.swift */; };
 		D11C591E2658A474007C83F2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11C591D2658A474007C83F2 /* StringExtension.swift */; };
-		D1F11B002658B9FD002D41DD /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F11AFF2658B9FD002D41DD /* NavigationViewController.swift */; };
-		D1F11B032658BA09002D41DD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F11B022658BA09002D41DD /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +28,6 @@
 		D11C59122658A023007C83F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D11C59192658A417007C83F2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D11C591D2658A474007C83F2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D1F11AFF2658B9FD002D41DD /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
-		D1F11B022658BA09002D41DD /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +77,6 @@
 			children = (
 				D11C59082658A022007C83F2 /* FirstViewController.swift */,
 				D11C59192658A417007C83F2 /* SecondViewController.swift */,
-				D1F11AFF2658B9FD002D41DD /* NavigationViewController.swift */,
-				D1F11B022658BA09002D41DD /* TabBarViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -173,11 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1F11B002658B9FD002D41DD /* NavigationViewController.swift in Sources */,
 				D11C591A2658A417007C83F2 /* SecondViewController.swift in Sources */,
 				D11C59092658A022007C83F2 /* FirstViewController.swift in Sources */,
 				D11C591E2658A474007C83F2 /* StringExtension.swift in Sources */,
-				D1F11B032658BA09002D41DD /* TabBarViewController.swift in Sources */,
 				D11C59052658A022007C83F2 /* AppDelegate.swift in Sources */,
 				D11C59072658A022007C83F2 /* SceneDelegate.swift in Sources */,
 			);

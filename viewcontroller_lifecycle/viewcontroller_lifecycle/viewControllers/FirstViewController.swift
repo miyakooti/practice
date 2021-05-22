@@ -14,6 +14,8 @@ class FirstViewController: UIViewController {
         // viewをメモリに読み込んだときに一度だけ呼ばれる。
         // navigation barで戻るときや、modalを閉じるときには呼ばれない
         // dismissはVCをメモリからも排除するので、再度ロードすると呼ばれる
+        self.tabBarController?.delegate = self
+        self.navigationController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +58,32 @@ class FirstViewController: UIViewController {
 
 
     @IBAction func nomalTransitionButtonDidTapped(_ sender: Any) {
+        print("modalに遷移します")
         performSegue(withIdentifier: .showSecondKey , sender: nil)
     }
     
 
 }
 
+// navigationでの遷移
+extension FirstViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        print("navigation Barで遷移しています")
+    }
+}
+
+// Tabbarでの遷移
+extension FirstViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        switch tabBarIndex {
+        case 1:
+            print("tabbarで遷移しています。")
+        default:
+            print("tabbarでの遷移先から戻っています。")
+        }
+    }
+
+}

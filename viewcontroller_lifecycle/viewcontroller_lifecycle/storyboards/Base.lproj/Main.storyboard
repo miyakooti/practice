@@ -195,7 +195,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="sVP-Ts-S8g">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hVR-1D-jjz" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hVR-1D-jjz" customClass="TabBarController" customModule="viewcontroller_lifecycle" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="0L3-5u-Y4e"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xvo-Vr-pIp">
