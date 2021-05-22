@@ -27,7 +27,7 @@ class FirstViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
-        // viewが画面に表示された直後に呼ばれるメソッド。テーブルビューとかのメソッドとこのメソッドはどっちが早いのだろう。
+        // viewが画面に表示された直後に呼ばれるメソッド。多分tableViewのデリゲートメソッドよりも早い。
     }
     
     override func viewWillLayoutSubviews() {
@@ -62,10 +62,9 @@ class FirstViewController: UIViewController {
         performSegue(withIdentifier: .showSecondKey , sender: nil)
     }
     
-
 }
 
-// navigationでの遷移
+// navigationControllerでの遷移
 extension FirstViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
@@ -73,7 +72,7 @@ extension FirstViewController: UINavigationControllerDelegate {
     }
 }
 
-// Tabbarでの遷移
+// TabbarControllerでの遷移
 extension FirstViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

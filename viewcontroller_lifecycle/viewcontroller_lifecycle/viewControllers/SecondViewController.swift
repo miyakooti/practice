@@ -1,10 +1,3 @@
-//
-//  SecondViewController.swift
-//  viewcontroller_lifecycle
-//
-//  Created by Arai Kousuke on 2021/05/22.
-//
-
 import UIKit
 
 class SecondViewController: UIViewController {
