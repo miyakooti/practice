@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--ホーム-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="viewcontroller_lifecycle" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,6 +37,9 @@
                                         <state key="normal" title="navigationでの遷移">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="LVB-WQ-U8H" kind="show" id="OzZ-WO-uku"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -49,7 +52,7 @@
                             <constraint firstItem="UpU-ps-XIG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qjy-mk-Qk5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="BXc-V6-p46"/>
+                    <tabBarItem key="tabBarItem" title="ホーム" image="house" catalog="system" id="BXc-V6-p46"/>
                     <navigationItem key="navigationItem" id="We9-lm-lVe"/>
                     <connections>
                         <segue destination="jax-PN-L9D" kind="presentation" identifier="showSecond" modalPresentationStyle="fullScreen" id="CO6-06-myD"/>
@@ -59,20 +62,72 @@
             </objects>
             <point key="canvasLocation" x="1673.913043478261" y="93.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Tabbarでの遷移-->
         <scene sceneID="8N1-ub-Rab">
             <objects>
-                <viewController id="Mno-gt-vp4" sceneMemberID="viewController">
+                <viewController id="Mno-gt-vp4" customClass="TabBarViewController" customModule="viewcontroller_lifecycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D2x-2S-tsi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tabbarです" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBb-dU-89s">
+                                <rect key="frame" x="50" y="430" width="314" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="BWk-ar-7NG"/>
+                                    <constraint firstAttribute="width" constant="314" id="YTo-Mu-xmd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-hy-Nxz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstItem="bBb-dU-89s" firstAttribute="centerY" secondItem="D2x-2S-tsi" secondAttribute="centerY" id="6PW-Jh-fxd"/>
+                            <constraint firstItem="bBb-dU-89s" firstAttribute="centerX" secondItem="D2x-2S-tsi" secondAttribute="centerX" id="NAI-Cd-cWa"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Tabbarでの遷移" image="arrowshape.turn.up.right" catalog="system" id="U5p-jg-khN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBj-Mo-I0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1674" y="869"/>
+        </scene>
+        <!--Navigation View Controller-->
+        <scene sceneID="wgK-te-LxO">
+            <objects>
+                <viewController id="LVB-WQ-U8H" customClass="NavigationViewController" customModule="viewcontroller_lifecycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OvX-o7-du7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="navigationです" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZZ-Rg-pFS">
+                                <rect key="frame" x="50" y="430" width="314" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="314" id="0he-Oi-OGr"/>
+                                    <constraint firstAttribute="height" constant="36" id="fuj-15-Otu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hC9-kB-W8K"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <constraints>
+                            <constraint firstItem="VZZ-Rg-pFS" firstAttribute="centerY" secondItem="OvX-o7-du7" secondAttribute="centerY" id="pF8-34-sFU"/>
+                            <constraint firstItem="VZZ-Rg-pFS" firstAttribute="centerX" secondItem="OvX-o7-du7" secondAttribute="centerX" id="rs3-Oi-JVF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="usX-CP-VVR"/>
+                    <connections>
+                        <outlet property="backButton" destination="usX-CP-VVR" id="1ce-lR-P6J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PgD-jg-0c5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="820"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="KnG-tW-Uua">
@@ -96,19 +151,28 @@
                                     <action selector="backButtonDidTapper:" destination="jax-PN-L9D" eventType="touchUpInside" id="49E-QC-p5M"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="modalです" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhV-mV-j29">
+                                <rect key="frame" x="50" y="347" width="314" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zai-FV-FvR"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
                             <constraint firstItem="KCD-1z-Up2" firstAttribute="centerY" secondItem="F6D-z9-DTU" secondAttribute="centerY" id="5cb-C9-Agt"/>
                             <constraint firstItem="KCD-1z-Up2" firstAttribute="centerX" secondItem="F6D-z9-DTU" secondAttribute="centerX" id="DfD-Yc-OJi"/>
+                            <constraint firstItem="BhV-mV-j29" firstAttribute="leading" secondItem="Zai-FV-FvR" secondAttribute="leading" constant="50" id="Nth-7D-lKJ"/>
+                            <constraint firstItem="KCD-1z-Up2" firstAttribute="top" secondItem="BhV-mV-j29" secondAttribute="bottom" constant="41.5" id="T6i-O6-8e9"/>
+                            <constraint firstItem="Zai-FV-FvR" firstAttribute="trailing" secondItem="BhV-mV-j29" secondAttribute="trailing" constant="50" id="XTM-cU-LLw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UL7-Wh-k5q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ta-Pj-dB4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2636.231884057971" y="-96.428571428571431"/>
+            <point key="canvasLocation" x="2634.7826086956525" y="-96.428571428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="taM-9C-mpa">
@@ -140,6 +204,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="L3S-YF-ol4"/>
+                        <segue destination="Mno-gt-vp4" kind="relationship" relationship="viewControllers" id="UrA-gV-esG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmz-6h-4aW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -148,6 +213,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -156,6 +223,12 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
